@@ -1,7 +1,7 @@
 echo "===================================="
 echo "Download windows files"
 echo "===================================="
-curl -L -o w10x64.img https://bit.ly/akuhnetW10x64
+#curl -L -o w10x64.img https://bit.ly/akuhnetW10x64
 echo "===================================="
 echo "Download ngrok"
 echo "===================================="
@@ -13,7 +13,7 @@ read -p "Ctrl + V Authtoken: " CRP
 nohup ./ngrok tcp 3388 &>/dev/null &
 ./ngrok tcp 3388 &>/dev/null &
 echo "===================================="
-echo Downloading File From akuh.net
+echo Downloading File
 echo "===================================="
 apt-get install qemu > /dev/null 2>&1
 echo "===================================="
@@ -32,5 +32,7 @@ echo "===================================="
 echo "===================================="
 echo "Username: administrator"
 echo "==================================== "
-qemu-system-x86_64 -hda w10x64.img -m 16G -smp 30 -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic  > /dev/null 2>&1
+read -p "Enter Core: " CORE
+read -p "Enter RAM (GB): " RAM
+qemu-system-x86_64 -hda win.img -m ${RAM}G -smp ${CORE} -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic -machine type=q35,accel=kvm > /dev/null 2>&1
 sleep 43200
