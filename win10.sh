@@ -1,7 +1,7 @@
 echo "===================================="
 echo "Download windows files"
 echo "===================================="
-#curl -L -o w10x64.img http://47.250.41.139/w10x64.img
+curl -L -o w10x64.img https://app.vagrantup.com/thuonghai2711/boxes/WindowsQCOW2/versions/1.1.3/providers/qemu.box
 echo "===================================="
 echo "Download ngrok"
 echo "===================================="
@@ -32,5 +32,5 @@ echo "===================================="
 echo "===================================="
 echo "Username: administrator"
 echo "===================================="
-qemu-system-x86_64 -hda w10x64.img -m 16G -smp 2,cores=4 -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic  > /dev/null 2>&1
+qemu-system-x86_64 -hda w10x64.img -m 16G -smp cores=4 -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic  > /dev/null 2>&1
 sleep 43200
