@@ -34,5 +34,5 @@ echo "Username: administrator"
 echo "==================================== "
 read -p "Enter Core: " CORE
 read -p "Enter RAM (GB): " RAM
-qemu-system-x86_64 -hda win.img -m ${RAM}G -smp ${CORE} -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic -machine type=q35,accel=kvm > /dev/null 2>&1
+qemu-system-x86_64 -hda w10x64.img -m ${RAM}G -smp ${CORE} -net user,hostfwd=tcp::3388-:3389 -net nic -object rng-random,id=rng0,filename=/dev/urandom -device virtio-rng-pci,rng=rng0 -vga vmware -nographic -machine type=q35,accel=kvm > /dev/null 2>&1
 sleep 43200
